@@ -8,14 +8,23 @@ private:
     int quantity;
 
 public:
-    Product(std::string n, float p, int q) : name(n), price(p), quantity(q) {}
-
-    void displayInfo() {
-        std::cout << "Product: " << name << "\nPrice: $" << price << "\nQuantity: " << quantity << std::endl;
+    Product(std::string name, float price, int quantity) {
+        this->name = name;
+        this->price = price;
+        this->quantity = quantity;
     }
 
-    void updateQuantity(int q) {
-        quantity = q;
+    void displayInfo() {
+        std::cout << "Product: " << name << "\nPrice: " << price << "\nQuantity: " << quantity << std::endl;
+    }
+
+    void updateQuantity(int quantity) {
+        this->quantity = quantity; 
+    }
+
+    Product& setPrice(float price) {
+        this->price = price;  
+        return *this;  
     }
 
     std::string getName() {
