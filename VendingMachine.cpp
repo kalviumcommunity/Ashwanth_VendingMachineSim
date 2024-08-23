@@ -8,8 +8,9 @@ private:
 public:
     VendingMachine() : product(nullptr) {}
 
-    void addProduct(Product* p) {
-        product = p;
+    VendingMachine& addProduct(Product* p) {
+        this->product = p; 
+        return *this; 
     }
 
     void displayProduct() {
