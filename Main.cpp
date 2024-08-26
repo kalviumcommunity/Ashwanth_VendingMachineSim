@@ -3,13 +3,18 @@
 #include "VendingMachine.cpp"
 
 int main() {
-    Product p1("Chips",100, 9);
-
-    p1.setPrice(250);
-
+    Product products[3] = {
+        Product("Chips", 1.50, 345),
+        Product("Coke", 2.00, 15),
+        Product("Feastables", 1.00, 27)
+    };
     VendingMachine vm;
-    vm.addProduct(&p1);
-    vm.displayProduct();
+
+    for (int i = 0; i < 3; ++i) {
+        vm.addProduct(&products[i]);
+    }
+    
+    vm.displayProducts();
 
     return 0;
 }
