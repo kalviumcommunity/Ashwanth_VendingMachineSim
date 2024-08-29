@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Product.cpp"  
 
 class VendingMachine {
 private:
@@ -13,7 +14,6 @@ public:
         }
     }
 
-    
     VendingMachine& addProduct(Product* p) {
         if (productCount < 10) {
             this->products[productCount] = p;
@@ -21,7 +21,7 @@ public:
         } else {
             std::cout << "Vending machine is full!" << std::endl;
         }
-        return *this; 
+        return *this;
     }
 
     void displayProducts() {
@@ -31,6 +31,12 @@ public:
             for (int i = 0; i < productCount; ++i) {
                 products[i]->displayInfo();
             }
+        }
+    }
+
+    ~VendingMachine() {
+        for (int i = 0; i < productCount; ++i) {
+            delete products[i]; 
         }
     }
 };
