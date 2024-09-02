@@ -1,5 +1,5 @@
 #include <iostream>
-#include "VendingMachine.cpp"  
+#include "VendingMachine.cpp"
 
 int main() {
 
@@ -7,8 +7,8 @@ int main() {
 
     Product* products[3];
     products[0] = new Product("Chips", 1.50, 10);
-    products[1] = new Product("Sprite", 2.00, 15);
-    products[2] = new Product("Feastables", 1.00, 20);
+    products[1] = new Product("Soda", 2.00, 15);
+    products[2] = new Product("Candy", 1.00, 20);
 
 
     for (int i = 0; i < 3; ++i) {
@@ -17,7 +17,13 @@ int main() {
 
     vm->displayProducts();
 
-    delete vm; 
+    vm->sellProduct(1);
+
+    std::cout << "Total Sales: $" << VendingMachine::getTotalSales() << std::endl;
+
+    std::cout << "Total number of products created: " << Product::getProductCount() << std::endl;
+
+    delete vm;
 
     return 0;
 }

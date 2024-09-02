@@ -4,38 +4,30 @@
 class Product {
 private:
     std::string name;
-    float price;
+    double price;
     int quantity;
-
+    static int productCount;  
 public:
-    Product(std::string name, float price, int quantity) {
-        this->name = name;
-        this->price = price;
-        this->quantity = quantity;
+    Product(const std::string& name, double price, int quantity)
+        : name(name), price(price), quantity(quantity) {
+        productCount++;  
     }
 
-    void displayInfo() {
-        std::cout << "Product: " << name << "\nPrice: " << price << "\nQuantity: " << quantity << std::endl;
-    }
-
-    void updateQuantity(int quantity) {
-        this->quantity = quantity; 
-    }
-
-    Product& setPrice(float price) {
-        this->price = price;  
-        return *this;  
-    }
-
-    std::string getName() {
-        return name;
-    }
-
-    float getPrice() {
+    double getPrice() const {
         return price;
     }
 
-    int getQuantity() {
-        return quantity;
+    void displayInfo() {
+        std::cout << "Product Name: " << name << ", Price: $" << price << ", Quantity: " << quantity << std::endl;
+    }
+
+    static int getProductCount() {
+        return productCount;  
+    }
+
+    ~Product() {
+        productCount--;
     }
 };
+
+int Product::productCount = 0;
