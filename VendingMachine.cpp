@@ -1,12 +1,10 @@
 #include <iostream>
-#include <string>
 #include "Product.cpp"
 
 class VendingMachine {
 private:
-    Product* products[10];  // Array of pointers to Product objects
-    int productCount;
-    static double totalSales;  // Static variable to keep track of total sales
+    Product* products[10];
+    int productCount;  
 
 public:
     VendingMachine() : productCount(0) {
@@ -15,9 +13,13 @@ public:
         }
     }
 
-    VendingMachine& addProduct(Product* p) {
+    int getProductCount() const {
+        return productCount;
+    }
+
+    VendingMachine& addProduct(Product* product) {
         if (productCount < 10) {
-            products[productCount] = p;
+            products[productCount] = product;
             productCount++;
         } else {
             std::cout << "Vending machine is full!" << std::endl;
@@ -25,18 +27,7 @@ public:
         return *this;
     }
 
-    void sellProduct(int index) {
-        if (index >= 0 && index < productCount && products[index] != nullptr) {
-            totalSales += products[index]->getPrice();
-            delete products[index];
-            products[index] = nullptr;
-            std::cout << "Product sold!" << std::endl;
-        } else {
-            std::cout << "Invalid product index." << std::endl;
-        }
-    }
-
-    void displayProducts() {
+    void displayProducts() const {
         if (productCount == 0) {
             std::cout << "No products available." << std::endl;
         } else {
@@ -48,15 +39,9 @@ public:
         }
     }
 
-    static double getTotalSales() {
-        return totalSales; 
-    }
-
     ~VendingMachine() {
         for (int i = 0; i < productCount; ++i) {
             delete products[i];
         }
     }
 };
-
-double VendingMachine::totalSales = 0.0;
