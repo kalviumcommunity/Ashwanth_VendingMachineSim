@@ -6,28 +6,46 @@ private:
     std::string name;
     double price;
     int quantity;
-    static int productCount;  
+
 public:
     Product(const std::string& name, double price, int quantity)
-        : name(name), price(price), quantity(quantity) {
-        productCount++;  
+        : name(name), price(price), quantity(quantity) {}
+
+    std::string getName() const {
+        return name;
     }
 
+    
+    void setName(const std::string& newName) {
+        name = newName;
+    }
+
+    
     double getPrice() const {
         return price;
     }
 
-    void displayInfo() {
-        std::cout << "Product Name: " << name << ", Price: $" << price << ", Quantity: " << quantity << std::endl;
+
+    void setPrice(double newPrice) {
+        if (newPrice >= 0) {
+            price = newPrice;
+        }
     }
 
-    static int getProductCount() {
-        return productCount;  
+    
+    int getQuantity() const {
+        return quantity;
     }
 
-    ~Product() {
-        productCount--;
+
+    void setQuantity(int newQuantity) {
+        if (newQuantity >= 0) {
+            quantity = newQuantity;
+        }
+    }
+
+    void displayInfo() const {
+        std::cout << "Product Name: " << name << ", Price: $" << price
+                  << ", Quantity: " << quantity << std::endl;
     }
 };
-
-int Product::productCount = 0;

@@ -1,29 +1,21 @@
 #include <iostream>
-#include "VendingMachine.cpp"
+#include "VendingMachine.cpp"  
 
 int main() {
 
-    VendingMachine* vm = new VendingMachine();
+    VendingMachine machine;
 
-    Product* products[3];
-    products[0] = new Product("Chips", 1.50, 10);
-    products[1] = new Product("Soda", 2.00, 15);
-    products[2] = new Product("Candy", 1.00, 20);
+    Product* product1 = new Product("Soda", 1.50, 10);
+    Product* product2 = new Product("Chips", 1.00, 5);
 
+    machine.addProduct(product1).addProduct(product2);
 
-    for (int i = 0; i < 3; ++i) {
-        vm->addProduct(products[i]);
-    }
+    machine.displayProducts();
 
-    vm->displayProducts();
+    std::cout << "Total number of products in the vending machine: " << machine.getProductCount() << std::endl;
 
-    vm->sellProduct(1);
-
-    std::cout << "Total Sales: $" << VendingMachine::getTotalSales() << std::endl;
-
-    std::cout << "Total number of products created: " << Product::getProductCount() << std::endl;
-
-    delete vm;
+    delete product1;
+    delete product2;
 
     return 0;
 }
