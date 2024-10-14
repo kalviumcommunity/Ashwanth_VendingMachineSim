@@ -1,13 +1,17 @@
 #include "VendingMachine.cpp"
 
 int main() {
+    
     VendingMachine machine;
 
-    Product* coke = new Product("Coke", 1.5, 10);
+    
+    Product* soda = new Product("Soda", 1.5, 10);
     Product* chips = new Product("Chips", 2.0, 5);
 
-    machine.addProduct(coke);
+    
+    machine.addProduct(soda);
     machine.addProduct(chips);
+
 
     machine.displayProducts();
 
