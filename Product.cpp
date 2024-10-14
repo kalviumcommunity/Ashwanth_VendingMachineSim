@@ -4,48 +4,39 @@
 class Product {
 private:
     std::string name;
-    double price;
+    float price;
     int quantity;
 
 public:
-    Product(const std::string& name, double price, int quantity)
-        : name(name), price(price), quantity(quantity) {}
+    
+    Product(std::string name, float price, int quantity) {
+        this->name = name;
+        this->price = price;
+        this->quantity = quantity;      
+    }
 
-    std::string getName() const {
+    
+    ~Product() {
+        std::cout << "Product " << name << " is being deleted." << std::endl;
+    }
+
+    std::string getName() {
         return name;
     }
 
-    
-    void setName(const std::string& newName) {
-        name = newName;
-    }
-
-    
-    double getPrice() const {
+    float getPrice() {
         return price;
     }
 
-
-    void setPrice(double newPrice) {
-        if (newPrice >= 0) {
-            price = newPrice;
-        }
+    void setPrice(float price) {
+        this->price = price;
     }
 
-    
-    int getQuantity() const {
+    int getQuantity() {
         return quantity;
     }
 
-
-    void setQuantity(int newQuantity) {
-        if (newQuantity >= 0) {
-            quantity = newQuantity;
-        }
-    }
-
-    void displayInfo() const {
-        std::cout << "Product Name: " << name << ", Price: $" << price
-                  << ", Quantity: " << quantity << std::endl;
+    void setQuantity(int quantity) {
+        this->quantity = quantity;
     }
 };
