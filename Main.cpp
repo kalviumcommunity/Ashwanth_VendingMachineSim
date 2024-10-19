@@ -1,20 +1,18 @@
-#include "VendingMachine.cpp"
+#include "Product.cpp"
+#include "FoodProduct.cpp"
+#include "DrinkProduct.cpp"
 
 int main() {
-    
-    VendingMachine machine;
 
-    
-    Product* soda = new Product("Soda", 1.5, 10);
-    Product* chips = new Product("Chips", 2.0, 5);
+    Product* product1 = new FoodProduct("Apple", 1.5, 100, "2024-12-01");
+    Product* product2 = new DrinkProduct("Soda", 2.0, 50, 1.5);
 
-    
-    machine.addProduct(soda);
-    machine.addProduct(chips);
+    product1->displayInfo();
+    product2->displayInfo();
 
 
-    machine.displayProducts();
+    delete product1;
+    delete product2;
 
-    std::cout << "Total number of products in the vending machine: " << machine.getProductCount() << std::endl;
     return 0;
 }
