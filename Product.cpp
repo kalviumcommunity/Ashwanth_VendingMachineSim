@@ -1,42 +1,21 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Product {
-private:
-    std::string name;
-    float price;
+public:
+    string name;
+    double price;
     int quantity;
 
-public:
-    
-    Product(std::string name, float price, int quantity) {
-        this->name = name;
-        this->price = price;
-        this->quantity = quantity;      
+
+    Product(string n, double p, int q) : name(n), price(p), quantity(q) {}
+
+    virtual ~Product() {
+        cout << "Product " << name << " is being deleted." << endl;
     }
 
-    
-    ~Product() {
-        std::cout << "Product " << name << " is being deleted." << std::endl;
-    }
-
-    std::string getName() {
-        return name;
-    }
-
-    float getPrice() {
-        return price;
-    }
-
-    void setPrice(float price) {
-        this->price = price;
-    }
-
-    int getQuantity() {
-        return quantity;
-    }
-
-    void setQuantity(int quantity) {
-        this->quantity = quantity;
+    virtual void displayInfo() {
+        cout << "Product: " << name << ", Price: " << price << ", Quantity: " << quantity << endl;
     }
 };
