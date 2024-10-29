@@ -1,12 +1,14 @@
-class FoodProduct : public Product {
+#include "VendingProduct.h"
+#include <iostream>
+#include <string>
+
+class FoodProduct : public VendingProduct {
+private:
+    std::string name;
+    double price;
 public:
-    string expirationDate;
-
-    FoodProduct(string n, double p, int q, string expDate)
-        : Product(n, p, q), expirationDate(expDate) {}
-
-    void displayInfo() override {
-        Product::displayInfo();
-        cout << "Expiration Date: " << expirationDate << endl;
+    FoodProduct(std::string n, double p) : name(n), price(p) {}
+    void displayType() const override {
+        std::cout << "This is a food product: " << name << " priced at " << price << "\n";
     }
 };
