@@ -1,19 +1,16 @@
-#include "Product.cpp"
-#include "FoodProduct.cpp"
 #include "DrinkProduct.cpp"
+#include "FoodProduct.cpp"
+#include <iostream>
 
 int main() {
-    Product* product1 = new FoodProduct("Apple", 1.5, 100, "2024-12-01");
-    Product* product2 = new DrinkProduct("Soda", 2.0, 50, 1.5);
-    Product* product3 = new Product("Chips", 0.99);  
+    VendingProduct* drink = new DrinkProduct("Coke", 1.5);
+    VendingProduct* food = new FoodProduct("borgir", 2.5);
 
-    product1->displayInfo();
-    product2->displayInfo();
-    product3->displayInfo("INR");  
+    drink->displayType(); 
+    food->displayType();   
 
-    delete product1;
-    delete product2;
-    delete product3;
+    delete drink;
+    delete food;
 
     return 0;
 }
