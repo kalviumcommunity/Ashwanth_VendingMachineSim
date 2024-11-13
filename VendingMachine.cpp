@@ -1,38 +1,20 @@
-#include "Product.cpp"
 #include <iostream>
+#include <vector>
+#include "FoodProduct.cpp"
+#include "DrinkProduct.cpp"
 
 class VendingMachine {
 private:
-    int productCount;
-    Product* products[10];
+    std::vector<Product*> products;
 
 public:
-    VendingMachine() {
-        productCount = 0;
-    }
-
-    ~VendingMachine() {
-        for (int i = 0; i < productCount; i++) {
-            delete products[i];
-        }
-        std::cout << "Vending machine is being shut down, and products are deleted." << std::endl;
-    }
-
     void addProduct(Product* product) {
-        if(productCount < 10) {
-            products[productCount] = product;
-            productCount++;
-        }
+        products.push_back(product);
     }
 
-    void displayProducts() {
-        for (int i = 0; i < productCount; i++) {
-            std::cout << products[i]->getName() << ": " << products[i]->getPrice() 
-                      << " (" << products[i]->getQuantity() << " left)" << std::endl;
+    void displayProducts() const {
+        for (const auto& product : products) {
+            std::cout << product->getName() << " - $" << product->getPrice() << std::endl;
         }
-    }
-
-    int getProductCount() {
-        return productCount;
     }
 };

@@ -1,16 +1,18 @@
-#include "DrinkProduct.cpp"
-#include "FoodProduct.cpp"
 #include <iostream>
+#include "Product.cpp"
+#include "VendingMachine.cpp"
 
 int main() {
-    VendingProduct* drink = new DrinkProduct("Coke", 1.5);
-    VendingProduct* food = new FoodProduct("borgir", 2.5);
+    VendingMachine machine;
+    
+    FoodProduct apple("Apple", 1.5);
+    DrinkProduct water("Water", 0.75);
 
-    drink->displayType(); 
-    food->displayType();   
+    machine.addProduct(&apple);
+    machine.addProduct(&water);
 
-    delete drink;
-    delete food;
+    std::cout << "Products in Vending Machine:" << std::endl;
+    machine.displayProducts();
 
     return 0;
 }
