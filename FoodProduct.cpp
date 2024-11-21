@@ -1,10 +1,11 @@
-#include <iostream>
+#ifndef FOODPRODUCT_H
+#define FOODPRODUCT_H
+
+#include "Product.cpp"
 
 class FoodProduct : public Product {
 public:
-    FoodProduct(std::string name, double price) : Product(name, price) {}
-
-    void displayFoodInfo() const {
-        std::cout << "Food Product: " << getName() << ", Price: " << getPrice() << std::endl;
-    }
+    FoodProduct(const std::string& name, double price) : Product(name, price) {}
 };
+
+#endif // FOODPRODUCT_H
